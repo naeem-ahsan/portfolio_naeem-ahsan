@@ -1,0 +1,113 @@
+---
+import { profile } from '../data/profile';
+---
+
+<div class="intro-layout">
+  <header class="intro-name">
+    <p class="eyebrow">Part I</p>
+    <h1 id="heading-introduction" class="display-name" tabindex="-1" aria-label={profile.name}>
+      <span aria-hidden="true">Naeem</span>
+      <span aria-hidden="true">Ahsan</span>
+    </h1>
+  </header>
+
+  <figure class="portrait-frame">
+    <img
+      src={profile.portrait}
+      width="640"
+      height="800"
+      alt="Portrait placeholder awaiting an approved photograph of Naeem Ahsan"
+      fetchpriority="high"
+    />
+    <figcaption>Portrait placeholder</figcaption>
+  </figure>
+
+  <blockquote class="editorial-statement">
+    <span class="sr-only">{profile.heroStatement}</span>
+    <span aria-hidden="true">“Building digital</span>
+    <span aria-hidden="true">experiences that</span>
+    <span aria-hidden="true">perform.”</span>
+  </blockquote>
+
+  <div class="intro-copy prose-copy">
+    <p>{profile.introduction}</p>
+    <a class="link-arrow" href="#work" data-chapter-link="work">Read portfolio</a>
+  </div>
+</div>
+
+<style>
+  .intro-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: clamp(2.5rem, 6vw, 5rem);
+    min-width: 0;
+  }
+
+  .intro-name {
+    display: grid;
+    gap: 1rem;
+    min-width: 0;
+  }
+
+  .display-name span,
+  .editorial-statement span {
+    display: block;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  .portrait-frame {
+    width: min(55vw, 13rem);
+    border: 1px solid var(--color-rule);
+    background: var(--color-paper-dark);
+  }
+
+  .portrait-frame img {
+    aspect-ratio: 4 / 5;
+    filter: grayscale(1);
+    object-fit: cover;
+  }
+
+  figcaption {
+    padding: 0.5rem;
+    border-top: 1px solid var(--color-rule);
+    font-size: 0.61rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .intro-copy {
+    display: grid;
+    gap: 1.5rem;
+    min-width: 0;
+    max-width: 33rem;
+  }
+
+  @media (min-width: 48rem) {
+    .intro-layout {
+      grid-template-columns: minmax(0, 1fr) minmax(10rem, 16rem);
+      grid-template-areas:
+        "name portrait"
+        "statement copy";
+      align-items: start;
+    }
+
+    .intro-name { grid-area: name; }
+    .portrait-frame { grid-area: portrait; width: 100%; justify-self: end; }
+    .editorial-statement { grid-area: statement; }
+    .intro-copy { grid-area: copy; align-self: end; }
+  }
+
+  @media (min-width: 64rem) {
+    .intro-layout {
+      min-height: calc(100svh - var(--footer-height) - clamp(4rem, 6vw, 8rem));
+      grid-template-columns: minmax(0, 1fr) clamp(11rem, 16vw, 15rem);
+      grid-template-rows: auto 1fr;
+      gap: clamp(2rem, 4vw, 4.5rem);
+    }
+
+    .editorial-statement {
+      align-self: end;
+    }
+  }
+</style>

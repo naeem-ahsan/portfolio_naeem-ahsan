@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Custom WordPress Job Portal placeholder image</title>
+  <desc id="desc">An abstract monochrome job-listing interface used until an approved project screenshot is available.</desc>
+  <rect width="1200" height="760" fill="#cbc6bc"/>
+  <rect x="76" y="68" width="1048" height="624" fill="#f2efe7" stroke="#11100e" stroke-width="3"/>
+  <path d="M76 154h1048M380 154v538" stroke="#aaa49a" stroke-width="3"/>
+  <rect x="126" y="212" width="204" height="46" fill="#11100e"/>
+  <path d="M126 320h190M126 360h160M126 400h180" stroke="#6d6860" stroke-width="12"/>
+  <path d="M438 224h492M438 270h366M438 358h540M438 402h470M438 490h520M438 534h390" stroke="#11100e" stroke-width="13"/>
+  <path d="M1014 214v334" stroke="#d6382f" stroke-width="20"/>
+</svg>

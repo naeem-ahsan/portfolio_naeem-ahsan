@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 800" role="img" aria-labelledby="title desc">
+  <title id="title">Portrait placeholder</title>
+  <desc id="desc">A neutral geometric placeholder to be replaced with an approved portrait of Naeem Ahsan.</desc>
+  <rect width="640" height="800" fill="#d6d1c8"/>
+  <circle cx="320" cy="275" r="112" fill="#918b82"/>
+  <path d="M112 704c18-175 91-274 208-274s190 99 208 274" fill="#6d6860"/>
+  <path d="M48 48h544v704H48z" fill="none" stroke="#11100e" stroke-width="2"/>
+  <text x="320" y="756" text-anchor="middle" font-family="monospace" font-size="20" letter-spacing="3" fill="#11100e">PORTRAIT PLACEHOLDER</text>
+</svg>

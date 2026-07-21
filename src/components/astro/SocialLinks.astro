@@ -1,0 +1,48 @@
+---
+import { socialLinks } from '../../data/socialLinks';
+
+interface Props {
+  compact?: boolean;
+}
+
+const { compact = false } = Astro.props;
+---
+
+<ul class:list={["social-links", { compact }]} aria-label="Social and contact links">
+  {socialLinks.map((link) => (
+    <li>
+      <a
+        href={link.href}
+        target={link.external ? '_blank' : undefined}
+        rel={link.external ? 'noreferrer' : undefined}
+        data-placeholder={link.placeholder ? 'true' : undefined}
+      >
+        {link.label}<span aria-hidden="true"> {link.external ? '↗' : '→'}</span>
+        {link.placeholder && <span class="sr-only"> (placeholder link)</span>}
+      </a>
+    </li>
+  ))}
+</ul>
+
+<style>
+  .social-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem 1.5rem;
+    list-style: none;
+  }
+
+  .social-links a {
+    display: inline-flex;
+    min-height: 2.75rem;
+    align-items: center;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .compact a {
+    min-height: auto;
+    font-size: 0.7rem;
+  }
+</style>

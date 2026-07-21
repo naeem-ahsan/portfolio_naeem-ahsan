@@ -1,0 +1,234 @@
+---
+import { render, type CollectionEntry } from 'astro:content';
+import SectionHeading from '../components/astro/SectionHeading.astro';
+
+interface Props {
+  projects: CollectionEntry<'projects'>[];
+}
+
+const { projects } = Astro.props;
+const renderedProjects = await Promise.all(
+  projects.map(async (project) => {
+    const { Content } = await render(project);
+    return {
+      project,
+      Content,
+      slug: project.data.slug ?? project.id,
+    };
+  }),
+);
+const categories = [...new Set(projects.map((project) => project.data.category))];
+---
+
+<SectionHeading
+  id="work"
+  numeral="II"
+  title="Selected Work"
+  kicker={`Project archive · ${projects.length.toString().padStart(2, '0')} projects · 2022—2026`}
+/>
+
+<div id="project-archive" class="project-archive">
+  <div class="project-filters" data-project-filters hidden aria-label="Filter projects">
+    <p class="eyebrow">Filter archive</p>
+    <div class="filter-buttons">
+      {['All', ...categories].map((category) => (
+        <button
+          type="button"
+          data-project-filter={category}
+          aria-pressed={category === 'All' ? 'true' : 'false'}
+        >
+          {category}
+        </button>
+      ))}
+    </div>
+  </div>
+
+  <div class="project-browser">
+    <div class="project-list" data-project-list>
+      {renderedProjects.map(({ project, slug }, index) => (
+        <article
+          class="project-row"
+          data-project-row
+          data-category={project.data.category}
+          data-slug={slug}
+          data-cover={project.data.coverImage}
+          data-title={project.data.title}
+        >
+          <p class="project-number">{String(index + 1).padStart(2, '0')}</p>
+          <div class="project-summary">
+            <p class="project-category">{project.data.category} · {project.data.year}</p>
+            <h3>{project.data.title}</h3>
+            <p>{project.data.summary}</p>
+            <p class="project-technologies">{project.data.technologies.join(' · ')}</p>
+            <a class="link-arrow" href={`#case-study-${slug}`} data-project-open={slug}>View case study</a>
+            {project.data.placeholder && <p class="placeholder-note">Editable project placeholder</p>}
+          </div>
+          <img
+            class="project-thumbnail"
+            src={project.data.coverImage}
+            width="1200"
+            height="760"
+            alt={`Placeholder visual for ${project.data.title}; approved project screenshot required`}
+            loading={index === 0 ? 'eager' : 'lazy'}
+          />
+        </article>
+      ))}
+      <p class="project-empty prose-copy" data-project-empty hidden>No projects match this filter.</p>
+    </div>
+
+    <figure class="project-preview" data-project-preview hidden aria-live="polite">
+      <img
+        src={renderedProjects[0]?.project.data.coverImage}
+        width="1200"
+        height="760"
+        alt={`Preview placeholder for ${renderedProjects[0]?.project.data.title}`}
+        data-project-preview-image
+      />
+      <figcaption data-project-preview-caption>{renderedProjects[0]?.project.data.title}</figcaption>
+    </figure>
+  </div>
+
+  <div class="case-study-list" data-case-study-list>
+    {renderedProjects.map(({ project, Content, slug }, index) => (
+      <article
+        id={`case-study-${slug}`}
+        class="project-case-study"
+        data-case-study={slug}
+        aria-labelledby={`case-study-title-${slug}`}
+      >
+        <div class="case-study-shell">
+          <header class="case-study-header">
+            <div>
+              <p class="eyebrow">Special Report · Project {String(index + 1).padStart(2, '0')}</p>
+              <h3 id={`case-study-title-${slug}`}>{project.data.title}</h3>
+            </div>
+            <button class="case-study-close" type="button" data-project-close hidden>Close ×</button>
+          </header>
+
+          <dl class="project-metadata">
+            <div><dt>Role</dt><dd>{project.data.role ?? 'To be confirmed'}</dd></div>
+            <div><dt>Period</dt><dd>{project.data.startYear ? `${project.data.startYear}—${project.data.endYear ?? project.data.year}` : project.data.year}</dd></div>
+            <div><dt>Category</dt><dd>{project.data.category}</dd></div>
+            <div><dt>Technology</dt><dd>{project.data.technologies.join(', ')}</dd></div>
+            <div><dt>Client</dt><dd>{project.data.nda ? 'Confidential / details withheld' : (project.data.clientName ?? 'To be confirmed')}</dd></div>
+          </dl>
+
+          <img
+            class="case-study-cover"
+            src={project.data.coverImage}
+            width="1200"
+            height="760"
+            alt={`Placeholder visual for ${project.data.title}; approved project screenshot required`}
+            loading="lazy"
+          />
+
+          <div class="case-study-prose prose-copy">
+            <Content />
+          </div>
+        </div>
+      </article>
+    ))}
+  </div>
+</div>
+
+<style>
+  .project-archive,
+  .project-list,
+  .case-study-list {
+    display: grid;
+  }
+
+  .project-filters {
+    gap: 0.8rem;
+    padding-block: 1.25rem;
+    border-bottom: 1px solid var(--color-rule);
+  }
+
+  .filter-buttons { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .filter-buttons button {
+    min-height: 2.75rem;
+    padding: 0.55rem 0.8rem;
+    border: 1px solid var(--color-rule);
+    background: transparent;
+    cursor: pointer;
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .filter-buttons button[aria-pressed="true"] { border-color: var(--color-ink); background: var(--color-ink); color: var(--color-paper-light); }
+
+  .project-row {
+    display: grid;
+    grid-template-columns: 2.5rem minmax(0, 1fr);
+    gap: 1rem;
+    padding-block: clamp(1.5rem, 3vw, 2.75rem);
+    border-bottom: 1px solid var(--color-rule);
+  }
+
+  .project-number,
+  .project-category,
+  .project-technologies,
+  .placeholder-note {
+    font-size: 0.69rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+  }
+
+  .project-category,
+  .project-technologies { color: var(--color-ink-muted); }
+  .placeholder-note { color: var(--color-accent-dark); }
+  .project-summary { display: grid; gap: 0.85rem; min-width: 0; }
+  .project-summary > * { min-width: 0; overflow-wrap: anywhere; }
+  .project-summary h3,
+  .case-study-header h3 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 4.2rem);
+    font-weight: 400;
+    line-height: 0.98;
+    text-transform: uppercase;
+  }
+
+  .project-summary > p:not([class]) { max-width: 50rem; font-size: 0.88rem; line-height: 1.6; }
+  .project-thumbnail { grid-column: 2; width: 100%; margin-top: 0.75rem; border: 1px solid var(--color-rule); filter: grayscale(1); }
+  .project-empty { padding: 2rem 0; }
+  .project-preview { display: none; }
+
+  .case-study-list { gap: 2rem; padding-top: clamp(3rem, 6vw, 6rem); }
+  .project-case-study { scroll-margin-top: 6rem; border: 1px solid var(--color-rule); background: var(--color-paper-light); }
+  .case-study-shell { padding: clamp(1.25rem, 4vw, 4rem); }
+  .case-study-header { display: flex; justify-content: space-between; gap: 1.5rem; padding-bottom: 2rem; border-bottom: 1px solid var(--color-rule); }
+  .case-study-header > div { min-width: 0; }
+  .case-study-header h3 { overflow-wrap: anywhere; }
+  .case-study-header .eyebrow { margin-bottom: 1rem; color: var(--color-accent-dark); }
+  .case-study-close { min-width: 5.5rem; min-height: 2.75rem; padding: 0.5rem; border: 1px solid currentColor; background: transparent; cursor: pointer; font-size: 0.72rem; text-transform: uppercase; }
+  .project-metadata { display: grid; border-bottom: 1px solid var(--color-rule); }
+  .project-metadata div { display: grid; grid-template-columns: 7rem minmax(0, 1fr); gap: 1rem; padding: 0.8rem 0; border-top: 1px solid var(--color-rule-soft); }
+  .project-metadata div:first-child { border-top: 0; }
+  .project-metadata dt { color: var(--color-ink-muted); font-size: 0.68rem; text-transform: uppercase; }
+  .project-metadata dd { font-size: 0.76rem; }
+  .case-study-cover { width: 100%; margin-block: 2rem; border: 1px solid var(--color-rule); filter: grayscale(1); }
+  .case-study-prose { display: grid; max-width: 52rem; gap: 1rem; }
+  .case-study-prose :global(h2) { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--color-rule); font-family: var(--font-display); font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 400; text-transform: uppercase; }
+  .case-study-prose :global(ul) { display: grid; gap: 0.6rem; padding-left: 1.2rem; }
+
+  @media (min-width: 48rem) {
+    .project-row { grid-template-columns: 3rem minmax(0, 1fr) minmax(15rem, 0.7fr); }
+    .project-thumbnail { grid-column: 3; grid-row: 1; margin-top: 0; align-self: start; }
+    .project-metadata { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .project-metadata div:nth-child(2) { border-top: 0; }
+  }
+
+  @media (max-width: 47.999rem) {
+    .case-study-header { align-items: flex-start; }
+    .case-study-close { position: sticky; top: 0.75rem; flex: 0 0 auto; background: var(--color-paper-light); }
+  }
+
+  @media (min-width: 75rem) {
+    .project-browser { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(18rem, 0.8fr); gap: 2rem; }
+    .project-preview { position: sticky; top: 0; display: block; align-self: start; border: 1px solid var(--color-rule); background: var(--color-paper-dark); }
+    .project-preview img { width: 100%; filter: grayscale(1); }
+    .project-preview figcaption { padding: 0.75rem; border-top: 1px solid var(--color-rule); font-size: 0.68rem; text-transform: uppercase; }
+    .project-archive[data-project-enhanced="true"] .project-thumbnail { display: none; }
+    .project-archive[data-project-enhanced="true"] .project-row { grid-template-columns: 3rem minmax(0, 1fr); }
+  }
+</style>

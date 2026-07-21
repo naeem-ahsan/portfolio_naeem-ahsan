@@ -1,0 +1,47 @@
+@theme {
+  --font-display: "Bodoni Moda Variable", "Bodoni Moda", "Times New Roman", Georgia, serif;
+  --font-mono: "IBM Plex Mono", "Courier New", monospace;
+
+  --color-paper: #f2efe7;
+  --color-paper-light: #faf8f1;
+  --color-paper-dark: #e5e0d6;
+  --color-ink: #11100e;
+  --color-ink-muted: #6d6860;
+  --color-ink-soft: #918b82;
+  --color-rule: #aaa49a;
+  --color-accent: #d6382f;
+  --color-accent-dark: #ad2922;
+  --color-accent-text: #fffaf2;
+  --color-focus: #2459d3;
+}
+
+:root {
+  --color-paper: #f2efe7;
+  --color-paper-light: #faf8f1;
+  --color-paper-dark: #e5e0d6;
+  --color-ink: #11100e;
+  --color-ink-muted: #6d6860;
+  --color-ink-soft: #918b82;
+  --color-rule: #aaa49a;
+  --color-rule-soft: rgb(17 16 14 / 18%);
+  --color-accent: #d6382f;
+  --color-accent-dark: #ad2922;
+  --color-accent-text: #fffaf2;
+  --color-focus: #2459d3;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+  --page-padding: clamp(1.25rem, 4vw, 4rem);
+  --content-max-width: 100rem;
+  --rule-width: 1px;
+  --chapter-tab-width: clamp(4rem, 5vw, 4.75rem);
+  --index-tab-width: clamp(5.125rem, 6.2vw, 6rem);
+  --footer-height: 4rem;
+  --transition-editorial: 620ms cubic-bezier(0.22, 1, 0.36, 1);
+}

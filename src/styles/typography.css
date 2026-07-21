@@ -1,0 +1,56 @@
+.display-name {
+  font-family: var(--font-display);
+  font-size: clamp(3.3rem, 8.3vw, 8.5rem);
+  font-weight: 400;
+  letter-spacing: -0.055em;
+  line-height: 0.86;
+  text-transform: uppercase;
+}
+
+.editorial-statement {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 6.4vw, 7rem);
+  font-weight: 400;
+  letter-spacing: -0.045em;
+  line-height: 0.91;
+  text-transform: uppercase;
+}
+
+.chapter-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 5.3vw, 5.8rem);
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  line-height: 0.93;
+  text-transform: uppercase;
+}
+
+.eyebrow {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.prose-copy {
+  font-size: clamp(0.9rem, 1.05vw, 1.05rem);
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 29.999rem) {
+  .display-name {
+    font-size: clamp(2.85rem, 13vw, 3.3rem);
+    letter-spacing: -0.04em;
+  }
+
+  .editorial-statement {
+    font-size: clamp(2.25rem, 10vw, 2.7rem);
+    overflow-wrap: break-word;
+  }
+
+  .chapter-title {
+    font-size: clamp(2.35rem, 12vw, 2.8rem);
+    overflow-wrap: break-word;
+  }
+}

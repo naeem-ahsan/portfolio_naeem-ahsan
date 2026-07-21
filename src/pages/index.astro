@@ -1,0 +1,52 @@
+---
+import ChapterPanel from '../components/astro/ChapterPanel.astro';
+import DesktopFooter from '../components/astro/DesktopFooter.astro';
+import MobileHeader from '../components/astro/MobileHeader.astro';
+import MobileFooter from '../components/astro/MobileFooter.astro';
+import PortfolioIndex from '../components/astro/PortfolioIndex.astro';
+import ChapterAccordion from '../components/vue/ChapterAccordion.vue';
+import PortfolioIndexController from '../components/vue/PortfolioIndexController.vue';
+import ProjectArchive from '../components/vue/ProjectArchive.vue';
+import { getCollection } from 'astro:content';
+import { navigation } from '../data/navigation';
+import { profile } from '../data/profile';
+import MainLayout from '../layouts/MainLayout.astro';
+import About from '../sections/About.astro';
+import Contact from '../sections/Contact.astro';
+import Experience from '../sections/Experience.astro';
+import Introduction from '../sections/Introduction.astro';
+import SelectedWork from '../sections/SelectedWork.astro';
+import Skills from '../sections/Skills.astro';
+
+const projects = (await getCollection('projects', ({ data }) => !data.draft))
+  .sort((a, b) => a.data.order - b.data.order);
+const featuredProjects = projects
+  .filter((project) => project.data.featured)
+  .map((project) => ({
+    title: project.data.title,
+    slug: project.data.slug ?? project.id,
+  }));
+---
+
+<MainLayout
+  title={`${profile.name} — ${profile.professionalTitle}`}
+  description="Naeem Ahsan is a web application developer in Kuala Lumpur specialising in CMS, e-commerce and modern frontend development."
+>
+  <MobileHeader />
+  <main id="main-content">
+    <div id="portfolio-deck" class="chapter-deck" data-active-chapter="introduction">
+      <ChapterPanel item={navigation[0]}><Introduction /></ChapterPanel>
+      <ChapterPanel item={navigation[1]}><SelectedWork projects={projects} /></ChapterPanel>
+      <ChapterPanel item={navigation[2]}><Experience /></ChapterPanel>
+      <ChapterPanel item={navigation[3]}><Skills /></ChapterPanel>
+      <ChapterPanel item={navigation[4]}><About /></ChapterPanel>
+      <ChapterPanel item={navigation[5]}><Contact /></ChapterPanel>
+    </div>
+  </main>
+  <PortfolioIndex featuredProjects={featuredProjects} />
+  <MobileFooter />
+  <ChapterAccordion chapters={navigation} client:load />
+  <PortfolioIndexController client:load />
+  <ProjectArchive client:load />
+  <DesktopFooter />
+</MainLayout>

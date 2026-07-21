@@ -1,0 +1,184 @@
+---
+import { navigation } from '../../data/navigation';
+import { profile } from '../../data/profile';
+import { socialLinks } from '../../data/socialLinks';
+
+interface FeaturedProject {
+  title: string;
+  slug: string;
+}
+
+interface Props {
+  featuredProjects: FeaturedProject[];
+}
+
+const { featuredProjects } = Astro.props;
+---
+
+<a
+  class="index-rail"
+  href="#index"
+  data-index-trigger
+  aria-haspopup="dialog"
+  aria-controls="portfolio-index-dialog"
+>
+  <span>Portfolio Index</span>
+</a>
+
+<aside id="portfolio-index-dialog" class="portfolio-index-panel" aria-labelledby="portfolio-index-title">
+  <header>
+    <div>
+      <p class="eyebrow">Directory · The Naeem Edition</p>
+      <h2 id="portfolio-index-title">Portfolio Index</h2>
+    </div>
+    <button type="button" data-index-close hidden>Close ×</button>
+  </header>
+
+  <div class="index-grid">
+    <nav aria-label="Portfolio chapters">
+      <ol>
+        {navigation.map((item) => (
+          <li>
+            <a href={`#${item.id}`} data-chapter-link={item.id}>
+              <span>{item.numeral}</span>
+              <strong>{item.label}</strong>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </nav>
+
+    <section aria-labelledby="index-projects-title">
+      <h3 id="index-projects-title">Featured reports</h3>
+      <ul>
+        {featuredProjects.map((project, index) => (
+          <li>
+            <a href={`#work/${project.slug}`} data-project-deep-link={project.slug}>
+              {String(index + 1).padStart(2, '0')} · {project.title}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section aria-labelledby="index-links-title">
+      <h3 id="index-links-title">External desk</h3>
+      <ul>
+        {socialLinks.map((link) => (
+          <li><a href={link.href} target={link.external ? '_blank' : undefined} rel={link.external ? 'noreferrer' : undefined}>{link.label}</a></li>
+        ))}
+        <li><a href={profile.cvUrl} download>Download CV placeholder</a></li>
+      </ul>
+    </section>
+  </div>
+</aside>
+
+<style>
+  .index-rail {
+    display: none;
+  }
+
+  .portfolio-index-panel {
+    scroll-margin-top: 5.5rem;
+    padding: clamp(3rem, 7vw, 6rem) var(--page-padding);
+    border-bottom: 1px solid var(--color-rule);
+    background: var(--color-accent);
+    color: var(--color-accent-text);
+  }
+
+  :global(html[data-index-enhanced="true"]) .portfolio-index-panel:not([data-open="true"]) {
+    display: none;
+  }
+
+  .portfolio-index-panel[data-open="true"] {
+    position: fixed;
+    inset: 0;
+    z-index: 120;
+    display: block;
+    overflow-y: auto;
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    padding-bottom: clamp(2rem, 5vw, 4rem);
+    border-bottom: 1px solid rgb(255 250 242 / 55%);
+  }
+
+  h2 {
+    margin-top: 0.75rem;
+    font-family: var(--font-display);
+    font-size: clamp(3.2rem, 8vw, 8rem);
+    font-weight: 400;
+    letter-spacing: -0.05em;
+    line-height: 0.9;
+    text-transform: uppercase;
+  }
+
+  button {
+    align-self: start;
+    min-width: 6rem;
+    min-height: 2.75rem;
+    padding: 0.5rem;
+    border: 1px solid currentColor;
+    background: transparent;
+    cursor: pointer;
+    text-transform: uppercase;
+  }
+
+  .index-grid {
+    display: grid;
+    gap: 3rem;
+    padding-top: clamp(2rem, 5vw, 4rem);
+  }
+
+  ol,
+  ul { list-style: none; }
+
+  nav a {
+    display: grid;
+    grid-template-columns: 3rem minmax(0, 1fr);
+    gap: 1rem;
+    min-height: 3.5rem;
+    align-items: center;
+    border-bottom: 1px solid rgb(255 250 242 / 45%);
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  nav strong { font-family: var(--font-display); font-size: clamp(1.35rem, 3vw, 2.4rem); font-weight: 400; }
+  section h3 { margin-bottom: 1rem; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; }
+  section li { border-top: 1px solid rgb(255 250 242 / 40%); }
+  section a { display: flex; min-height: 3rem; align-items: center; font-size: 0.76rem; text-transform: uppercase; }
+
+  @media (min-width: 48rem) {
+    .index-grid { grid-template-columns: minmax(20rem, 1.5fr) minmax(13rem, 0.8fr) minmax(12rem, 0.65fr); }
+  }
+
+  @media (min-width: 64rem) {
+    .index-rail {
+      position: fixed;
+      inset: 0 0 var(--footer-height) auto;
+      z-index: 45;
+      display: grid;
+      width: var(--index-tab-width);
+      place-items: center;
+      background: var(--color-accent);
+      color: var(--color-accent-text);
+      text-decoration: none;
+    }
+
+    .index-rail span {
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      font-size: 0.85rem;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    .portfolio-index-panel[data-open="true"] {
+      padding: clamp(2rem, 4vw, 5rem);
+    }
+  }
+</style>

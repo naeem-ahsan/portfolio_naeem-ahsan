@@ -1,0 +1,35 @@
+---
+import { profile } from '../../data/profile';
+import SocialLinks from './SocialLinks.astro';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="mobile-footer">
+  <p>© The Naeem Edition {year}</p>
+  <p>{profile.location}</p>
+  <SocialLinks />
+  <a href="#introduction">Back to the beginning ↑</a>
+</footer>
+
+<style>
+  .mobile-footer {
+    display: grid;
+    gap: 1.25rem;
+    padding: 2rem var(--page-padding) 3rem;
+    border-top: 1px solid var(--color-rule);
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .mobile-footer > a {
+    min-height: 2.75rem;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  @media (min-width: 64rem) {
+    .mobile-footer { display: none; }
+  }
+</style>

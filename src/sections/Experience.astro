@@ -1,0 +1,80 @@
+---
+import SectionHeading from '../components/astro/SectionHeading.astro';
+import { experience } from '../data/experience';
+---
+
+<SectionHeading id="experience" numeral="III" title="Career Archive" kicker="Experience · Responsibilities · Technologies" />
+
+<div class="experience-list">
+  {experience.sort((a, b) => a.order - b.order).map((item) => (
+    <details class="experience-entry">
+      <summary>
+        <span class="experience-period">{item.startDate}—{item.endDate}</span>
+        <span class="experience-role">{item.title}</span>
+        <span class="experience-company">{item.company}</span>
+        <span class="experience-action" aria-hidden="true">Expand +</span>
+      </summary>
+      <div class="experience-body prose-copy">
+        <p>{item.summary}</p>
+        <ul>
+          {item.responsibilities.map((responsibility) => <li>{responsibility}</li>)}
+        </ul>
+        <p class="experience-tech">{item.technologies.join(' · ')}</p>
+        {item.placeholder && <p class="placeholder-note">Placeholder entry — details require approval.</p>}
+      </div>
+    </details>
+  ))}
+</div>
+
+<style>
+  .experience-list {
+    border-bottom: 1px solid var(--color-rule);
+  }
+
+  .experience-entry {
+    border-top: 1px solid var(--color-rule);
+  }
+
+  .experience-entry:first-child {
+    border-top: 0;
+  }
+
+  summary {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    min-height: 4rem;
+    padding: 1.25rem 0;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  summary::-webkit-details-marker { display: none; }
+  .experience-period,
+  .experience-company,
+  .experience-action,
+  .experience-tech,
+  .placeholder-note {
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .experience-role {
+    font-family: var(--font-display);
+    font-size: clamp(1.7rem, 3vw, 2.7rem);
+    text-transform: uppercase;
+  }
+
+  .experience-action { color: var(--color-accent-dark); }
+  .experience-body { display: grid; gap: 1rem; max-width: 52rem; padding: 0 0 2rem; }
+  .experience-body ul { display: grid; gap: 0.65rem; padding-left: 1.3rem; }
+  .placeholder-note { color: var(--color-accent-dark); }
+
+  @media (min-width: 48rem) {
+    summary {
+      grid-template-columns: 0.8fr 1.5fr 1.2fr auto;
+      align-items: center;
+    }
+  }
+</style>

@@ -1,0 +1,3 @@
+CV PLACEHOLDER
+
+Replace this file with Naeem Ahsan's approved CV and update src/data/profile.ts.

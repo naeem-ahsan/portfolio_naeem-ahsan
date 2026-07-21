@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Valiram Corporate Platform placeholder image</title>
+  <desc id="desc">An abstract monochrome editorial browser layout used until an approved project screenshot is available.</desc>
+  <rect width="1200" height="760" fill="#d9d5cc"/>
+  <rect x="72" y="72" width="1056" height="616" fill="#f2efe7" stroke="#11100e" stroke-width="3"/>
+  <path d="M72 150h1056M720 150v538" stroke="#aaa49a" stroke-width="3"/>
+  <rect x="760" y="202" width="306" height="224" fill="#6d6860"/>
+  <path d="M132 238h470M132 286h390M132 452h510M132 482h430M132 512h455" stroke="#11100e" stroke-width="14"/>
+  <rect x="132" y="574" width="186" height="50" fill="#d6382f"/>
+</svg>

@@ -1,0 +1,90 @@
+.chapter-deck {
+  width: 100%;
+  max-width: var(--content-max-width);
+  margin-inline: auto;
+}
+
+.chapter-panel {
+  position: relative;
+  border-bottom: 1px solid var(--color-rule);
+  scroll-margin-top: 5.5rem;
+}
+
+.chapter-content {
+  padding: clamp(3rem, 7vw, 6rem) var(--page-padding);
+}
+
+.chapter-tab {
+  display: none;
+}
+
+@media (min-width: 64rem) {
+  .chapter-deck[data-enhanced="true"] {
+    position: fixed;
+    inset: 0 var(--index-tab-width) var(--footer-height) 0;
+    display: flex;
+    width: auto;
+    max-width: none;
+    overflow: hidden;
+  }
+
+  .chapter-deck[data-enhanced="true"] .chapter-panel {
+    flex: 0 0 var(--chapter-tab-width);
+    min-width: 0;
+    height: 100%;
+    overflow: hidden;
+    border-right: 1px solid var(--color-rule);
+    border-bottom: 0;
+    transition: flex-basis var(--transition-editorial), flex-grow var(--transition-editorial);
+  }
+
+  .chapter-deck[data-enhanced="true"] .chapter-panel[data-active="true"] {
+    flex: 1 1 auto;
+  }
+
+  .chapter-deck[data-enhanced="true"] .chapter-tab {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: grid;
+    width: var(--chapter-tab-width);
+    height: 100%;
+    place-items: center;
+    padding: 1rem;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    opacity: 1;
+    transition: opacity 180ms ease;
+  }
+
+  .chapter-deck[data-enhanced="true"] .chapter-tab span {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-size: 0.76rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .chapter-deck[data-enhanced="true"] .chapter-panel[data-active="true"] .chapter-tab {
+    pointer-events: none;
+    opacity: 0;
+  }
+
+  .chapter-deck[data-enhanced="true"] .chapter-content {
+    width: calc(100vw - (5 * var(--chapter-tab-width)) - var(--index-tab-width));
+    min-width: min(33rem, calc(100vw - (5 * var(--chapter-tab-width)) - var(--index-tab-width)));
+    height: 100%;
+    padding: clamp(2rem, 3vw, 4rem);
+    overflow-y: auto;
+    opacity: 0;
+    transform: translateX(1rem);
+    transition: opacity 240ms ease 140ms, transform 360ms ease 100ms;
+  }
+
+  .chapter-deck[data-enhanced="true"] .chapter-panel[data-active="true"] .chapter-content {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

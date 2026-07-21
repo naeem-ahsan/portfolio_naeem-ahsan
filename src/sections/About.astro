@@ -1,0 +1,68 @@
+---
+import SectionHeading from '../components/astro/SectionHeading.astro';
+import { profile } from '../data/profile';
+---
+
+<SectionHeading id="about" numeral="V" title="From the Editor’s Desk" kicker="Profile · Approach · Working principles" />
+
+<div class="about-grid">
+  <figure>
+    <img src={profile.portrait} width="640" height="800" alt="Portrait placeholder awaiting an approved photograph of Naeem Ahsan" loading="lazy" />
+    <figcaption>Approved portrait required</figcaption>
+  </figure>
+
+  <div class="about-copy">
+    <p class="about-statement">I build maintainable, content-driven experiences for the web.</p>
+    <p class="prose-copy">{profile.biography}</p>
+    <dl>
+      <div><dt>Location</dt><dd>{profile.location}</dd></div>
+      <div><dt>Experience</dt><dd>{profile.yearsExperience}</dd></div>
+      <div><dt>Primary focus</dt><dd>{profile.primaryFocus}</dd></div>
+      <div><dt>Working style</dt><dd>{profile.workingStyle}</dd></div>
+    </dl>
+    <a class="link-arrow" href={profile.cvUrl} download>Download CV placeholder</a>
+  </div>
+</div>
+
+<div class="editorial-qa">
+  <h3>Questions & working notes</h3>
+  <details>
+    <summary>What kind of work do you enjoy?</summary>
+    <p>Answer placeholder: replace with an approved personal response.</p>
+  </details>
+  <details>
+    <summary>What matters most when building a website?</summary>
+    <p>Answer placeholder: replace with an approved personal response.</p>
+  </details>
+  <details>
+    <summary>How do you approach maintainability?</summary>
+    <p>Answer placeholder: replace with an approved personal response.</p>
+  </details>
+</div>
+
+<style>
+  .about-grid {
+    display: grid;
+    gap: 2.5rem;
+    padding-block: clamp(2rem, 4vw, 4rem);
+  }
+
+  figure { max-width: 22rem; border: 1px solid var(--color-rule); }
+  figure img { aspect-ratio: 4 / 5; filter: grayscale(1); object-fit: cover; }
+  figcaption { padding: 0.6rem; border-top: 1px solid var(--color-rule); font-size: 0.65rem; text-transform: uppercase; }
+  .about-copy { display: grid; align-content: start; gap: 1.5rem; }
+  .about-statement { font-family: var(--font-display); font-size: clamp(2.2rem, 4vw, 4.7rem); line-height: 0.98; text-transform: uppercase; }
+  dl { display: grid; border-top: 1px solid var(--color-rule); }
+  dl div { display: grid; grid-template-columns: minmax(7rem, 0.6fr) 1.4fr; gap: 1rem; padding: 0.8rem 0; border-bottom: 1px solid var(--color-rule); }
+  dt { color: var(--color-ink-muted); font-size: 0.68rem; text-transform: uppercase; }
+  dd { font-size: 0.78rem; }
+  .editorial-qa { border-top: 1px solid var(--color-rule); }
+  .editorial-qa h3 { padding: 1.5rem 0; font-family: var(--font-display); font-size: 1.8rem; font-weight: 400; text-transform: uppercase; }
+  .editorial-qa details { border-top: 1px solid var(--color-rule); }
+  .editorial-qa summary { min-height: 3.5rem; padding: 1rem 0; cursor: pointer; }
+  .editorial-qa p { max-width: 45rem; padding: 0 0 1.5rem; font-size: 0.85rem; line-height: 1.6; }
+
+  @media (min-width: 48rem) {
+    .about-grid { grid-template-columns: minmax(12rem, 0.7fr) minmax(0, 1.5fr); }
+  }
+</style>
