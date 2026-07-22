@@ -2,7 +2,7 @@
 
 A production-oriented, single-page portfolio for Naeem Ahsan, Web Application Developer in Kuala Lumpur, Malaysia. The site uses an original editorial interface inspired by late-1990s independent publications: cream paper, high-contrast serif type, monospace metadata, thin rules, horizontal desktop chapters, and one red Portfolio Index.
 
-The repository currently contains editable placeholder biography, GitHub, project, portrait, canonical-domain, and social-preview data. Complete the [publication checklist](#publication-readiness-checklist) before deploying publicly.
+The repository currently contains editable placeholder biography, project, portrait, canonical-domain, and social-preview data. Complete the [publication checklist](#publication-readiness-checklist) before deploying publicly.
 
 ## Design concept
 
@@ -284,7 +284,7 @@ Do not publish while canonical metadata still points to `example.com`.
 
 - [ ] Replace the neutral portrait placeholder and alt text.
 - [x] Confirm the public email address and phone number.
-- [ ] Replace the GitHub root URL with Naeem's profile URL.
+- [x] Confirm the GitHub profile URL.
 - [x] Confirm the LinkedIn profile URL.
 - [x] Add the approved CV PDF.
 - [x] Confirm location as Kuala Lumpur, Malaysia.

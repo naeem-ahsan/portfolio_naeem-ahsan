@@ -23,7 +23,6 @@ export const profile: Profile = {
 
 export const placeholderChecklist = [
   'Portrait and portrait alt text',
-  'GitHub URL',
   'Professional biography',
   'Years of experience',
   'Availability statement',
