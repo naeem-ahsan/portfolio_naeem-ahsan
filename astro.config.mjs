@@ -3,7 +3,7 @@ import vue from '@astrojs/vue';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  site: 'https://example.com', // Placeholder: replace with the approved canonical domain.
+  site: 'https://portfolio.naeem-ahsan.workers.dev', // Placeholder: replace with the approved canonical domain.
   output: 'static',
   integrations: [vue()],
   vite: {
