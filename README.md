@@ -2,7 +2,7 @@
 
 A production-oriented, single-page portfolio for Naeem Ahsan, Web Application Developer in Kuala Lumpur, Malaysia. The site uses an original editorial interface inspired by late-1990s independent publications: cream paper, high-contrast serif type, monospace metadata, thin rules, horizontal desktop chapters, and one red Portfolio Index.
 
-The repository currently contains editable placeholder biography, employment, contact, project, portrait, CV, canonical-domain, and social data. Complete the [publication checklist](#publication-readiness-checklist) before deploying publicly.
+The repository currently contains editable placeholder biography, GitHub, project, portrait, canonical-domain, and social-preview data. Complete the [publication checklist](#publication-readiness-checklist) before deploying publicly.
 
 ## Design concept
 
@@ -207,6 +207,7 @@ Update `src/data/profile.ts` for:
 - Name and professional title
 - Kuala Lumpur location
 - Public email
+- Public phone number
 - Introduction and hero statement
 - Biography and years of experience
 - Primary focus and working style
@@ -282,13 +283,13 @@ Do not publish while canonical metadata still points to `example.com`.
 ## Publication readiness checklist
 
 - [ ] Replace the neutral portrait placeholder and alt text.
-- [ ] Replace `hello@example.com` in profile and social data.
+- [x] Confirm the public email address and phone number.
 - [ ] Replace the GitHub root URL with Naeem's profile URL.
-- [ ] Replace the LinkedIn root URL with Naeem's profile URL.
-- [ ] Replace the CV text placeholder with the approved PDF.
+- [x] Confirm the LinkedIn profile URL.
+- [x] Add the approved CV PDF.
 - [x] Confirm location as Kuala Lumpur, Malaysia.
-- [ ] Confirm current company, title and employment dates.
-- [ ] Replace the biography, experience summary and Q&A answers.
+- [x] Confirm career history, titles and employment dates from the approved CV.
+- [ ] Replace the biography and Q&A answers.
 - [ ] Confirm years of experience.
 - [ ] Review all project titles, descriptions and responsibilities.
 - [ ] Add approved project screenshots and accurate alt text.

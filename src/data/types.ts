@@ -4,6 +4,7 @@ export interface Profile {
   professionalTitle: string;
   location: string;
   email: string;
+  phone: string;
   introduction: string;
   heroStatement: string;
   availability?: string;

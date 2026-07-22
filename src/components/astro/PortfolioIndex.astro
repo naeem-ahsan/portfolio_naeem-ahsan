@@ -67,7 +67,7 @@ const { featuredProjects } = Astro.props;
         {socialLinks.map((link) => (
           <li><a href={link.href} target={link.external ? '_blank' : undefined} rel={link.external ? 'noreferrer' : undefined}>{link.label}</a></li>
         ))}
-        <li><a href={profile.cvUrl} download>Download CV placeholder</a></li>
+        <li><a href={profile.cvUrl} download>Download CV</a></li>
       </ul>
     </section>
   </div>

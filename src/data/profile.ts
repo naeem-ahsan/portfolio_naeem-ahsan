@@ -1,17 +1,18 @@
 import type { Profile } from './types';
 
-// Personal copy and links marked as placeholders must be reviewed before publication.
+// Personal copy and unresolved links marked as placeholders must be reviewed before publication.
 export const profile: Profile = {
   name: 'Naeem Ahsan',
   shortName: 'Naeem',
   professionalTitle: 'Web Application Developer',
   location: 'Kuala Lumpur, Malaysia',
-  email: 'hello@example.com',
+  email: 'naeem30kbw@gmail.com',
+  phone: '+60167030375',
   introduction:
     'Web application developer specialising in WordPress, Shopify, PHP and modern frontend technologies. I build maintainable, content-driven websites focused on performance, usability and clean implementation.',
   heroStatement: 'Building digital experiences that perform.',
   availability: 'Availability to be confirmed',
-  cvUrl: '/resume/naeem-ahsan-cv-placeholder.txt',
+  cvUrl: '/resume/naeem-ahsan-CV.pdf',
   portrait: '/images/placeholders/portrait-placeholder.svg',
   biography:
     'Professional biography placeholder: replace this text with an approved account of Naeem’s experience, interests and approach to web development.',
@@ -22,12 +23,10 @@ export const profile: Profile = {
 
 export const placeholderChecklist = [
   'Portrait and portrait alt text',
-  'Public email address',
-  'GitHub and LinkedIn URLs',
-  'CV file',
+  'GitHub URL',
   'Professional biography',
   'Years of experience',
-  'Current company and employment dates',
+  'Availability statement',
   'Project descriptions, outcomes, links and screenshots',
   'Canonical domain and Open Graph image',
 ] as const;

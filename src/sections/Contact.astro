@@ -9,17 +9,22 @@ import { profile } from '../data/profile';
 <div class="contact-layout">
   <p class="editorial-statement">Let’s build something useful.</p>
   <div class="contact-copy prose-copy">
-    <p>For project enquiries and professional conversations, use one of the direct links below. Contact details are placeholders until approved.</p>
-    <a class="email-link" href={`mailto:${profile.email}`}>{profile.email}</a>
+    <p>For project enquiries and professional conversations, use one of the direct links below.</p>
+    <div class="contact-details">
+      <a class="contact-link" href={`mailto:${profile.email}`}>{profile.email}</a>
+      <a class="contact-link phone-link" href={`tel:${profile.phone}`}>{profile.phone}</a>
+    </div>
     <SocialLinks />
-    <a class="link-arrow" href={profile.cvUrl} download>Download CV placeholder</a>
+    <a class="link-arrow" href={profile.cvUrl} download>Download CV</a>
   </div>
 </div>
 
 <style>
   .contact-layout { display: grid; gap: 3rem; padding-block: clamp(2.5rem, 6vw, 6rem); }
   .contact-copy { display: grid; gap: 1.5rem; max-width: 38rem; }
-  .email-link { width: fit-content; color: var(--color-accent-dark); font-family: var(--font-display); font-size: clamp(1.6rem, 3.5vw, 3.5rem); line-height: 1.1; overflow-wrap: anywhere; }
+  .contact-details { display: grid; gap: 0.75rem; }
+  .contact-link { width: fit-content; color: var(--color-accent-dark); font-family: var(--font-display); font-size: clamp(1.6rem, 3.5vw, 3.5rem); line-height: 1.1; overflow-wrap: anywhere; }
+  .phone-link { font-size: clamp(1.35rem, 2.8vw, 2.8rem); }
   @media (min-width: 48rem) {
     .contact-layout { grid-template-columns: minmax(0, 1.4fr) minmax(18rem, 0.8fr); align-items: end; }
   }
