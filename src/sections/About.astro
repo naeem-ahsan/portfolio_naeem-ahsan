@@ -7,16 +7,16 @@ import { profile } from '../data/profile';
 
 <div class="about-grid">
   <figure>
-    <img src={profile.portrait} width="640" height="800" alt="Portrait placeholder awaiting an approved photograph of Naeem Ahsan" loading="lazy" />
-    <figcaption>Approved portrait required</figcaption>
+    <img src={profile.portrait} width="640" height="800" alt="Portrait photograph of Naeem Ahsan" loading="lazy" />
   </figure>
 
   <div class="about-copy">
-    <p class="about-statement">I build maintainable, content-driven experiences for the web.</p>
+    <p class="about-statement">Hi, I’m Naeem.<br />I build full-stack web experiences.</p>
     <p class="prose-copy">{profile.biography}</p>
     <dl>
       <div><dt>Location</dt><dd>{profile.location}</dd></div>
       <div><dt>Experience</dt><dd>{profile.yearsExperience}</dd></div>
+      <div><dt>Availability</dt><dd>{profile.availability}</dd></div>
       <div><dt>Primary focus</dt><dd>{profile.primaryFocus}</dd></div>
       <div><dt>Working style</dt><dd>{profile.workingStyle}</dd></div>
     </dl>
