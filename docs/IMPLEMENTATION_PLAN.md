@@ -192,7 +192,7 @@ Exact compatible versions will be resolved and locked during scaffolding rather 
 
 - Approved portrait and alt text.
 - Approved canonical domain.
-- Confirmed biography, years-of-experience label, availability statement and Q&A answers.
+- Confirmed biography, years-of-experience label and availability statement.
 - Approved project descriptions, outcomes, links, screenshots, and confidentiality status.
 - Open Graph image.
 
@@ -456,7 +456,8 @@ No feature will be marked complete solely because it builds; interaction accepta
 | 2026-07-22 | Deployment | Complete | Connected the GitHub production branch to Cloudflare Workers Builds for static-asset deployment. The build uses `npm run build`; Wrangler deploys `./dist` with compatibility date `2026-07-22`. Production pushes now trigger automatic builds and deployments. |
 | 2026-07-22 | CV content refresh | Complete | Read the approved two-page CV and replaced the placeholder Career Archive with four roles, aligned all eight Skills groups with the CV, added verified email/phone/LinkedIn details, retained the confirmed GitHub profile, and stored the CV under `public/resume/` so static builds retain it. `npm run check`: 0 errors/warnings/hints. `npm run build`: passed. The built PDF matches the source asset; generated HTML contains the new career, skill and contact data and no obsolete contact/career placeholders. Desktop Career, Skills and Contact captures were reviewed, and the 320–1920px audit reports no horizontal overflow. |
 | 2026-07-24 | About introduction | Complete | Replaced the generic About statement with the approved two-line personal introduction: “Hi, I’m Naeem. I build full-stack web experiences.” `npm run check`: 0 errors/warnings/hints. `npm run build`: passed. |
+| 2026-07-27 | Education archive | Complete | Replaced the placeholder “Questions & working notes” block with a typed, CV-backed Education archive in the About chapter. Generated HTML contains both qualifications and no obsolete Q&A copy. `npm run check`: 0 errors/warnings/hints. `npm run build`: passed. |
 
 ## 11. Approval gate
 
-All implementation milestones are complete. Publication remains gated by the personal-content checklist in the README: approved portrait, biography and Q&A, experience label and availability, project facts/screenshots/outcomes, canonical domain, and Open Graph image.
+All implementation milestones are complete. Publication remains gated by the personal-content checklist in the README: approved portrait, biography, experience label and availability, project facts/screenshots/outcomes, canonical domain, and Open Graph image.

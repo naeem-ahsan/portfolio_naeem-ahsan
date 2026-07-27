@@ -46,6 +46,16 @@ export interface ExperienceItem {
   placeholder: boolean;
 }
 
+export interface EducationItem {
+  qualification: string;
+  institution: string;
+  startYear: string;
+  endYear: string;
+  location: string;
+  detail?: string;
+  order: number;
+}
+
 export interface SkillGroup {
   title: string;
   skills: string[];

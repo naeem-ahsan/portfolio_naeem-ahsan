@@ -196,6 +196,10 @@ Update `src/data/experience.ts`. Each entry supports title, company, dates, loca
 
 Keep entries in the intended chronological order through the `order` field. Set `placeholder: false` only after the complete entry is approved for public use.
 
+## Edit education
+
+Update `src/data/education.ts`. Each entry supports a qualification, institution, dates, location, optional detail and display order. The About chapter generates its Education archive from this file.
+
 ## Edit skills
 
 Update `src/data/skills.ts`. Add, remove, or reorder groups and skill names in that one file. The Skills chapter generates its classified directory from the exported array.
@@ -289,7 +293,7 @@ Do not publish while canonical metadata still points to `example.com`.
 - [x] Add the approved CV PDF.
 - [x] Confirm location as Kuala Lumpur, Malaysia.
 - [x] Confirm career history, titles and employment dates from the approved CV.
-- [ ] Replace the biography and Q&A answers.
+- [ ] Replace the biography.
 - [ ] Confirm years of experience.
 - [ ] Review all project titles, descriptions and responsibilities.
 - [ ] Add approved project screenshots and accurate alt text.

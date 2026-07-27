@@ -1,9 +1,10 @@
 ---
 import SectionHeading from '../components/astro/SectionHeading.astro';
+import { education } from '../data/education';
 import { profile } from '../data/profile';
 ---
 
-<SectionHeading id="about" numeral="V" title="From the Editor’s Desk" kicker="Profile · Approach · Working principles" />
+<SectionHeading id="about" numeral="V" title="From the Editor’s Desk" kicker="Profile · Education · Working principles" />
 
 <div class="about-grid">
   <figure>
@@ -24,21 +25,28 @@ import { profile } from '../data/profile';
   </div>
 </div>
 
-<div class="editorial-qa">
-  <h3>Questions & working notes</h3>
-  <details>
-    <summary>What kind of work do you enjoy?</summary>
-    <p>Answer placeholder: replace with an approved personal response.</p>
-  </details>
-  <details>
-    <summary>What matters most when building a website?</summary>
-    <p>Answer placeholder: replace with an approved personal response.</p>
-  </details>
-  <details>
-    <summary>How do you approach maintainability?</summary>
-    <p>Answer placeholder: replace with an approved personal response.</p>
-  </details>
-</div>
+<section class="education-archive" aria-labelledby="education-heading">
+  <header class="education-heading">
+    <p class="eyebrow">Academic Record</p>
+    <h3 id="education-heading">Education</h3>
+  </header>
+
+  <ol>
+    {[...education].sort((a, b) => a.order - b.order).map((item) => (
+      <li class="education-entry">
+        <p class="education-period">{item.startYear}—{item.endYear}</p>
+        <div>
+          <h4>{item.qualification}</h4>
+          <p class="education-institution">{item.institution}</p>
+        </div>
+        <div class="education-meta">
+          <p>{item.location}</p>
+          {item.detail && <p>{item.detail}</p>}
+        </div>
+      </li>
+    ))}
+  </ol>
+</section>
 
 <style>
   .about-grid {
@@ -56,13 +64,20 @@ import { profile } from '../data/profile';
   dl div { display: grid; grid-template-columns: minmax(7rem, 0.6fr) 1.4fr; gap: 1rem; padding: 0.8rem 0; border-bottom: 1px solid var(--color-rule); }
   dt { color: var(--color-ink-muted); font-size: 0.68rem; text-transform: uppercase; }
   dd { font-size: 0.78rem; }
-  .editorial-qa { border-top: 1px solid var(--color-rule); }
-  .editorial-qa h3 { padding: 1.5rem 0; font-family: var(--font-display); font-size: 1.8rem; font-weight: 400; text-transform: uppercase; }
-  .editorial-qa details { border-top: 1px solid var(--color-rule); }
-  .editorial-qa summary { min-height: 3.5rem; padding: 1rem 0; cursor: pointer; }
-  .editorial-qa p { max-width: 45rem; padding: 0 0 1.5rem; font-size: 0.85rem; line-height: 1.6; }
+  .education-archive { border-top: 1px solid var(--color-rule); }
+  .education-heading { display: grid; gap: 0.6rem; padding: 1.5rem 0; }
+  .education-heading h3 { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 400; text-transform: uppercase; }
+  .education-archive ol { border-bottom: 1px solid var(--color-rule); list-style: none; }
+  .education-entry { display: grid; gap: 0.75rem; padding: 1.5rem 0; border-top: 1px solid var(--color-rule); }
+  .education-period,
+  .education-institution,
+  .education-meta { font-size: 0.72rem; letter-spacing: 0.05em; text-transform: uppercase; }
+  .education-entry h4 { max-width: 42rem; font-family: var(--font-display); font-size: clamp(1.35rem, 2.4vw, 2.15rem); font-weight: 400; line-height: 1.08; text-transform: uppercase; }
+  .education-institution { margin-top: 0.6rem; color: var(--color-ink-muted); line-height: 1.5; }
+  .education-meta { display: grid; align-content: start; gap: 0.35rem; color: var(--color-ink-muted); }
 
   @media (min-width: 48rem) {
     .about-grid { grid-template-columns: minmax(12rem, 0.7fr) minmax(0, 1.5fr); }
+    .education-entry { grid-template-columns: minmax(7rem, 0.45fr) minmax(0, 1.55fr) minmax(8rem, 0.5fr); gap: 1.5rem; align-items: start; }
   }
 </style>
