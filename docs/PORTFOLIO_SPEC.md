@@ -1001,7 +1001,7 @@ src/
 │   └── projects/
 │       ├── valiram-corporate-platform.md
 │       ├── custom-wordpress-job-portal.md
-│       └── shopify-commerce-enhancement.md
+│       └── quivo-wordpress-site.md
 │
 ├── data/
 │   ├── experience.ts

@@ -10,7 +10,7 @@ technologies:
   - MySQL
   - JavaScript
 featured: true
-order: 2
+order: 3
 coverImage: /images/placeholders/project-job-portal.svg
 gallery:
   - /images/placeholders/project-job-portal.svg
