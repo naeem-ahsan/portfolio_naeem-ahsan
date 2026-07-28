@@ -458,6 +458,7 @@ No feature will be marked complete solely because it builds; interaction accepta
 | 2026-07-24 | About introduction | Complete | Replaced the generic About statement with the approved two-line personal introduction: “Hi, I’m Naeem. I build full-stack web experiences.” `npm run check`: 0 errors/warnings/hints. `npm run build`: passed. |
 | 2026-07-27 | Education archive | Complete | Replaced the placeholder “Questions & working notes” block with a typed, CV-backed Education archive in the About chapter. Generated HTML contains both qualifications and no obsolete Q&A copy. `npm run check`: 0 errors/warnings/hints. `npm run build`: passed. |
 | 2026-07-28 | Public project links | Complete | Added the approved Valiram Corporate Platform URL and conditional external website links to project archive rows and case-study metadata. Projects without a public URL remain unchanged. Generated HTML contains two safe external Valiram links. `npm run check`: 0 errors/warnings/hints. `npm run build`: passed. |
+| 2026-07-28 | Native momentum scrolling | Complete | Added touch momentum and vertical overscroll containment to desktop chapter content, the Portfolio Index overlay and project case-study overlays. Native mouse-wheel, keyboard and reduced-motion behavior remains unchanged; no scroll interception was introduced. Production CSS contains all three scoped rules. `npm run check`: 0 errors/warnings/hints. `npm run build`: passed. |
 
 ## 11. Approval gate
 

@@ -210,6 +210,8 @@ onUnmounted(() => abortController?.abort());
   z-index: 110;
   display: block;
   overflow-y: auto;
+  overscroll-behavior-y: contain;
+  -webkit-overflow-scrolling: touch;
   border: 0;
   background: var(--color-paper-light);
 }
