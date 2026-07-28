@@ -60,7 +60,12 @@ const categories = [...new Set(projects.map((project) => project.data.category))
             <h3>{project.data.title}</h3>
             <p>{project.data.summary}</p>
             <p class="project-technologies">{project.data.technologies.join(' · ')}</p>
-            <a class="link-arrow" href={`#case-study-${slug}`} data-project-open={slug}>View case study</a>
+            <div class="project-actions">
+              <a class="link-arrow" href={`#case-study-${slug}`} data-project-open={slug}>View case study</a>
+              {project.data.projectUrl && (
+                <a class="link-arrow" href={project.data.projectUrl} target="_blank" rel="noreferrer">Visit website</a>
+              )}
+            </div>
             {project.data.placeholder && <p class="placeholder-note">Editable project placeholder</p>}
           </div>
           <img
@@ -111,6 +116,12 @@ const categories = [...new Set(projects.map((project) => project.data.category))
             <div><dt>Category</dt><dd>{project.data.category}</dd></div>
             <div><dt>Technology</dt><dd>{project.data.technologies.join(', ')}</dd></div>
             <div><dt>Client</dt><dd>{project.data.nda ? 'Confidential / details withheld' : (project.data.clientName ?? 'To be confirmed')}</dd></div>
+            {project.data.projectUrl && (
+              <div>
+                <dt>Website</dt>
+                <dd><a href={project.data.projectUrl} target="_blank" rel="noreferrer">Visit website ↗</a></dd>
+              </div>
+            )}
           </dl>
 
           <img
@@ -179,6 +190,7 @@ const categories = [...new Set(projects.map((project) => project.data.category))
   .placeholder-note { color: var(--color-accent-dark); }
   .project-summary { display: grid; gap: 0.85rem; min-width: 0; }
   .project-summary > * { min-width: 0; overflow-wrap: anywhere; }
+  .project-actions { display: flex; flex-wrap: wrap; gap: 0.75rem 1.5rem; }
   .project-summary h3,
   .case-study-header h3 {
     font-family: var(--font-display);
