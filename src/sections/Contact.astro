@@ -2,19 +2,27 @@
 import SectionHeading from '../components/astro/SectionHeading.astro';
 import SocialLinks from '../components/astro/SocialLinks.astro';
 import { profile } from '../data/profile';
+
+const whatsappNumber = profile.phone.replace(/\D/g, '');
 ---
 
-<SectionHeading id="contact" numeral="VI" title="Final Edition" kicker="Contact · Collaboration · Useful work" />
+<SectionHeading id="contact" numeral="V" title="Final Edition" kicker="Contact · Collaboration · Useful work" />
 
 <div class="contact-layout">
   <p class="editorial-statement">Let’s build something meaningful.</p>
   <div class="contact-copy prose-copy">
     <p>For project enquiries and professional conversations, use one of the direct links below.</p>
-    <div class="contact-details">
-      <a class="contact-link" href={`mailto:${profile.email}`}>{profile.email}</a>
-      <a class="contact-link phone-link" href={`tel:${profile.phone}`}>{profile.phone}</a>
+    <div class="contact-actions">
+      <a class="contact-button" href={`mailto:${profile.email}`}>Email</a>
+      <a
+        class="contact-button"
+        href={`https://wa.me/${whatsappNumber}`}
+        target="_blank"
+        rel="noreferrer"
+        aria-label="Contact Naeem on WhatsApp (opens in a new tab)"
+      >WhatsApp</a>
     </div>
-    <SocialLinks />
+    <SocialLinks showEmail={false} />
     <a class="link-arrow" href={profile.cvUrl} download>Download CV</a>
   </div>
 </div>
@@ -22,9 +30,28 @@ import { profile } from '../data/profile';
 <style>
   .contact-layout { display: grid; gap: 3rem; padding-block: clamp(2.5rem, 6vw, 6rem); }
   .contact-copy { display: grid; gap: 1.5rem; max-width: 38rem; }
-  .contact-details { display: grid; gap: 0.75rem; }
-  .contact-link { width: fit-content; color: var(--color-accent-dark); font-family: var(--font-display); font-size: clamp(1.6rem, 2.2vw, 3.5rem); line-height: 1.1; overflow-wrap: anywhere; }
-  .phone-link { font-size: clamp(1.35rem, 2.2vw, 2.8rem); }
+  .contact-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  .contact-button {
+    display: inline-flex;
+    min-width: 8.5rem;
+    min-height: 2.75rem;
+    align-items: center;
+    justify-content: center;
+    padding: 0.7rem 1rem;
+    border: 1px solid var(--color-accent-dark);
+    color: var(--color-accent-dark);
+    font-size: 0.76rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: background-color 180ms ease, color 180ms ease;
+  }
+  .contact-button:hover,
+  .contact-button:focus-visible {
+    background: var(--color-accent-dark);
+    color: var(--color-accent-text);
+  }
   @media (min-width: 48rem) {
     .contact-layout { grid-template-columns: minmax(0, 1.4fr) minmax(18rem, 1.2fr); align-items: end; }
   }

@@ -17,7 +17,7 @@ onMounted(() => {
     document.querySelector<HTMLElement>('.desktop-footer'),
   ].filter((item): item is HTMLElement => Boolean(item));
   let returnFocus: HTMLElement | null = null;
-  let returnHash = '#introduction';
+  let returnHash = '#about';
 
   document.documentElement.dataset.indexEnhanced = 'true';
   if (closeButton) closeButton.hidden = false;
@@ -37,7 +37,7 @@ onMounted(() => {
   const open = (options: { push?: boolean; trigger?: HTMLElement | null } = {}) => {
     if (panel.dataset.open === 'true') return;
     returnFocus = options.trigger ?? document.activeElement as HTMLElement | null;
-    if (window.location.hash !== '#index') returnHash = window.location.hash || '#introduction';
+    if (window.location.hash !== '#index') returnHash = window.location.hash || '#about';
     panel.dataset.open = 'true';
     panel.setAttribute('role', 'dialog');
     panel.setAttribute('aria-modal', 'true');

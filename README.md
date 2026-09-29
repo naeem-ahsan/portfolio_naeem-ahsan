@@ -57,10 +57,10 @@ src/
 │   ├── astro/          # Static editorial UI and semantic wrappers
 │   └── vue/            # Focused interaction controllers
 ├── content/projects/   # One Markdown file per project
-├── data/               # Profile, navigation, social, skills and experience data
+├── data/               # Profile, navigation, social, education, skills and experience data
 ├── layouts/            # Document metadata and page shell
 ├── pages/              # Astro route composition and content query
-├── sections/           # Six portfolio chapters
+├── sections/           # Five portfolio chapters
 ├── styles/             # Fonts, tokens, typography and chapter behavior
 └── content.config.ts   # Content Collection schema
 
@@ -94,11 +94,11 @@ The Vue components control existing Astro-rendered elements through stable data 
 
 At 1024px and wider:
 
-- Introduction opens by default.
+- About opens by default.
 - Selecting a collapsed chapter expands it and collapses the previous chapter.
 - Left/Right Arrow, Home and End move among chapter controls; Enter and Space activate buttons.
 - User-activated changes move focus to the selected chapter heading.
-- `#introduction`, `#work`, `#experience`, `#skills`, `#about`, and `#contact` are canonical chapter hashes.
+- `#about`, `#work`, `#experience`, `#skills`, and `#contact` are canonical chapter hashes.
 - Back and Forward restore chapter state without forced focus changes.
 - The red Index opens with its visible trigger or optional Cmd/Ctrl+K shortcut.
 - The active panel scrolls internally when its content is taller than the viewport.
@@ -136,7 +136,7 @@ The site targets WCAG 2.2 AA where practical and includes:
 - Visible keyboard focus
 - Disclosure-style chapter buttons with control/panel relationships
 - Keyboard chapter navigation
-- Native `details`/`summary` experience and Q&A entries
+- Native `details`/`summary` experience entries
 - Programmatic filter state and a live result announcement
 - Accessible Index and case-study overlays with Escape, focus containment and focus restoration
 - Background inertness and scroll locking while overlays are open
@@ -212,7 +212,6 @@ Update `src/data/profile.ts` for:
 - Kuala Lumpur location
 - Public email
 - Public phone number
-- Introduction and hero statement
 - Biography and years of experience
 - Primary focus and working style
 - CV and portrait paths
@@ -225,7 +224,7 @@ Update the canonical-domain placeholder in `astro.config.mjs` and replace any pl
 
 1. Add the approved image under `src/assets/portraits/` or `public/images/`.
 2. Update `profile.portrait` in `src/data/profile.ts`.
-3. Replace both placeholder alt strings in `src/sections/Introduction.astro` and `src/sections/About.astro` with an accurate description.
+3. Replace the portrait alt text in `src/sections/About.astro` with an accurate description.
 4. Use explicit dimensions and an appropriately compressed modern format.
 5. Remove the placeholder caption after approval.
 

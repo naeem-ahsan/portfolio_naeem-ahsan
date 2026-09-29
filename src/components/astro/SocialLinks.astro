@@ -3,13 +3,17 @@ import { socialLinks } from '../../data/socialLinks';
 
 interface Props {
   compact?: boolean;
+  showEmail?: boolean;
 }
 
-const { compact = false } = Astro.props;
+const { compact = false, showEmail = true } = Astro.props;
+const visibleLinks = showEmail
+  ? socialLinks
+  : socialLinks.filter((link) => !link.href.startsWith('mailto:'));
 ---
 
 <ul class:list={["social-links", { compact }]} aria-label="Social and contact links">
-  {socialLinks.map((link) => (
+  {visibleLinks.map((link) => (
     <li>
       <a
         href={link.href}

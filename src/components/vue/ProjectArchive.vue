@@ -33,10 +33,11 @@ onMounted(() => {
 
   const setPreview = (row: HTMLElement) => {
     const source = row.dataset.cover;
+    const coverAlt = row.dataset.coverAlt;
     const title = row.dataset.title;
     if (previewImage && source && title) {
       previewImage.src = source;
-      previewImage.alt = `Preview placeholder for ${title}`;
+      previewImage.alt = coverAlt ?? `Project cover for ${title}`;
     }
     if (previewCaption && title) previewCaption.textContent = title;
   };

@@ -99,7 +99,6 @@ src/
 │   ├── About.astro
 │   ├── Contact.astro
 │   ├── Experience.astro
-│   ├── Introduction.astro
 │   ├── SelectedWork.astro
 │   └── Skills.astro
 ├── styles/
@@ -133,10 +132,10 @@ public/
 
 One typed state parser/serializer will be the authority for URL state:
 
-- Chapter states: `#introduction`, `#work`, `#experience`, `#skills`, `#about`, `#contact`.
+- Chapter states: `#about`, `#work`, `#experience`, `#skills`, `#contact`.
 - Portfolio index state: `#index`.
 - Project state: `#work/<project-slug>`.
-- An absent or invalid hash resolves to Introduction without creating a history loop.
+- An absent or invalid hash resolves to About without creating a history loop.
 
 User-initiated chapter, index, and project actions will push history entries. Initial-state normalisation and non-user reconciliation will replace rather than push. A `popstate`/`hashchange` coordinator will restore chapter/index/project state without stealing focus. Opening a case study from Work will create a history entry so Back closes it; a direct project deep link will close to `#work` without navigating the visitor away from the site. The close-button fallback behaviour will be tested for both entry paths.
 
@@ -227,7 +226,7 @@ Each milestone is completed, validated, and recorded here before the next begins
 - Scaffold Astro with strict TypeScript, Vue, Tailwind v4, and static output.
 - Add design tokens, reset, typography foundations, and global reduced-motion rules.
 - Create typed profile/navigation/social/experience/skills modules.
-- Build `MainLayout.astro`, skip link, semantic page landmarks, and all six static chapter shells.
+- Build `MainLayout.astro`, skip link, semantic page landmarks, and all static chapter shells.
 - Prove the Astro-content/Vue-controller boundary with one chapter interaction before scaling it.
 - Ensure the unhydrated document is readable and anchor-navigable.
 
@@ -248,7 +247,7 @@ Each milestone is completed, validated, and recorded here before the next begins
 - Configure the project Content Collection and schema.
 - Add the three clearly labelled sample projects with placeholder imagery/content.
 - Exclude drafts, sort by `order`, derive categories, and render projects through Astro.
-- Complete Introduction, Selected Work, Experience, Skills, About, and Contact static layouts.
+- Complete About, Selected Work, Experience, Skills, and Contact static layouts.
 - Use native `details`/`summary` for experience entries.
 - Add image dimensions, loading policy, and descriptive placeholder alt text.
 
@@ -404,7 +403,7 @@ The desktop system precedes project deep-link completion because both need one c
 | --- | --- | --- |
 | Astro/Vue ownership creates duplicated or hydration-sensitive chapter markup | High | Prove the slotted controller boundary in Milestone 1; retain one Astro-owned semantic content tree and fall back to scoped state attributes if needed. |
 | Multiple islands compete over hash/history state | High | One typed parser/serializer and one documented event contract; test direct entry, Back, Forward, close, invalid hashes, and rapid navigation. |
-| Desktop accordion is too narrow at 1024px after six tabs and Index | High | Clamp tab widths at the lower breakpoint, permit active-panel internal scrolling, and validate real content at 1024px before visual polish. |
+| Desktop accordion is too narrow at 1024px after collapsed tabs and Index | High | Derive active width from the current chapter count, clamp tab widths at the lower breakpoint, permit active-panel internal scrolling, and validate real content at 1024px before visual polish. |
 | Focus movement conflicts with Back/Forward or modal restoration | High | Track input origin; move focus only for explicit user activation and restore triggers only when still connected. |
 | Static no-JS content conflicts with enhanced hidden panels/modals | High | Default to visible document flow; apply enhanced hiding only after the controller is ready; audit tabbability/inert state. |
 | Direct case-study deep links have no prior in-site history entry | Medium | Distinguish direct entry from in-app entry; close direct entries to `#work` with replace semantics and test refresh behaviour. |
@@ -459,6 +458,9 @@ No feature will be marked complete solely because it builds; interaction accepta
 | 2026-07-27 | Education archive | Complete | Replaced the placeholder “Questions & working notes” block with a typed, CV-backed Education archive in the About chapter. Generated HTML contains both qualifications and no obsolete Q&A copy. `npm run check`: 0 errors/warnings/hints. `npm run build`: passed. |
 | 2026-07-28 | Public project links | Complete | Added the approved Valiram Corporate Platform URL and conditional external website links to project archive rows and case-study metadata. Projects without a public URL remain unchanged. Generated HTML contains two safe external Valiram links. `npm run check`: 0 errors/warnings/hints. `npm run build`: passed. |
 | 2026-07-28 | Native momentum scrolling | Complete | Added touch momentum and vertical overscroll containment to desktop chapter content, the Portfolio Index overlay and project case-study overlays. Native mouse-wheel, keyboard and reduced-motion behavior remains unchanged; no scroll interception was introduced. Production CSS contains all three scoped rules. `npm run check`: 0 errors/warnings/hints. `npm run build`: passed. |
+| 2026-09-29 | Chapter consolidation | Complete | User-approved specification exception: removed the duplicated Introduction chapter and promoted About to Part I, the single page heading and the default opening chapter. Renumbered Contact to Part V, removed stale introduction state/data, derived desktop panel width from the five-chapter navigation, and redirected legacy `#introduction` hashes to `#about`. Generated HTML contains exactly five chapters and one `h1`. The 320–1920px browser audit reports no horizontal overflow, correct mobile/desktop modes and correct About defaults; `#work`, `#contact` and the legacy redirect were verified. `npm run check`: 0 errors/warnings/hints. `npm run build`: passed. |
+| 2026-09-29 | PROLAB project case study | Complete | Added the user-confirmed PROLAB client website as a featured 2026 WordPress project, linked to `prolab.my`, with a locally stored official cover asset and a factual case study based on the live site and confirmed development role. Positioned it second in the project archive and added optional per-project cover alt text so published artwork is no longer described as a placeholder. Generated HTML contains three ordered projects, two PROLAB website links and the local cover asset. Desktop archive and direct case-study views render correctly; true 375px device emulation reports `scrollWidth === clientWidth` with the case study open. `npm run check`: 0 errors/warnings/hints. `npm run build`: passed. |
+| 2026-09-29 | Contact actions | Complete | Replaced the visible email address and telephone link in the Contact chapter with labelled Email and WhatsApp buttons. Email retains the existing `mailto:` action; WhatsApp uses the international profile number through `wa.me` and opens in a new tab. Suppressed the duplicate Email social link within the Contact chapter while retaining GitHub and LinkedIn. Generated HTML contains two contact buttons, one mail link, one WhatsApp link, no telephone link and no visible email address or phone number. Desktop Contact rendering was reviewed. `npm run check`: 0 errors/warnings/hints. `npm run build`: passed. |
 
 ## 11. Approval gate
 

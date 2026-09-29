@@ -4,14 +4,16 @@ interface Props {
   numeral: string;
   title: string;
   kicker?: string;
+  level?: 1 | 2;
 }
 
-const { id, numeral, title, kicker } = Astro.props;
+const { id, numeral, title, kicker, level = 2 } = Astro.props;
+const HeadingTag = level === 1 ? 'h1' : 'h2';
 ---
 
 <header class="section-heading">
   <p class="eyebrow">Part {numeral}</p>
-  <h2 id={`heading-${id}`} class="chapter-title" tabindex="-1">{title}</h2>
+  <HeadingTag id={`heading-${id}`} class="chapter-title" tabindex="-1">{title}</HeadingTag>
   {kicker && <p class="section-kicker">{kicker}</p>}
 </header>
 

@@ -4,11 +4,11 @@ import { education } from '../data/education';
 import { profile } from '../data/profile';
 ---
 
-<SectionHeading id="about" numeral="V" title="From the Editor’s Desk" kicker="Profile · Education · Working principles" />
+<SectionHeading id="about" numeral="I" title="From the Editor’s Desk" kicker="Profile · Education · Working principles" level={1} />
 
 <div class="about-grid">
   <figure>
-    <img src={profile.portrait} width="640" height="800" alt="Portrait photograph of Naeem Ahsan" loading="lazy" />
+    <img src={profile.portrait} width="640" height="800" alt="Portrait photograph of Naeem Ahsan" loading="eager" fetchpriority="high" />
   </figure>
 
   <div class="about-copy">

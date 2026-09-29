@@ -12,7 +12,7 @@ technologies:
   - Bootstrap 5
   - AWS
 featured: true
-order: 2
+order: 3
 coverImage: /images/projects/project-quivo.webp
 gallery:
   - /images/projects/project-quivo.webp

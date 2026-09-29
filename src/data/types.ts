@@ -5,8 +5,6 @@ export interface Profile {
   location: string;
   email: string;
   phone: string;
-  introduction: string;
-  heroStatement: string;
   availability?: string;
   cvUrl: string;
   portrait: string;
@@ -23,7 +21,7 @@ export interface NavigationItem {
   shortLabel: string;
 }
 
-export type ChapterId = 'introduction' | 'work' | 'experience' | 'skills' | 'about' | 'contact';
+export type ChapterId = 'about' | 'work' | 'experience' | 'skills' | 'contact';
 
 export interface SocialLink {
   label: string;

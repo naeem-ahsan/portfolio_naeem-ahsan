@@ -14,7 +14,6 @@ import MainLayout from '../layouts/MainLayout.astro';
 import About from '../sections/About.astro';
 import Contact from '../sections/Contact.astro';
 import Experience from '../sections/Experience.astro';
-import Introduction from '../sections/Introduction.astro';
 import SelectedWork from '../sections/SelectedWork.astro';
 import Skills from '../sections/Skills.astro';
 
@@ -34,13 +33,17 @@ const featuredProjects = projects
 >
   <MobileHeader />
   <main id="main-content">
-    <div id="portfolio-deck" class="chapter-deck" data-active-chapter="introduction">
-      <ChapterPanel item={navigation[0]}><Introduction /></ChapterPanel>
+    <div
+      id="portfolio-deck"
+      class="chapter-deck"
+      data-active-chapter="about"
+      style={`--collapsed-chapter-count: ${navigation.length - 1}`}
+    >
+      <ChapterPanel item={navigation[0]} active><About /></ChapterPanel>
       <ChapterPanel item={navigation[1]}><SelectedWork projects={projects} /></ChapterPanel>
       <ChapterPanel item={navigation[2]}><Experience /></ChapterPanel>
       <ChapterPanel item={navigation[3]}><Skills /></ChapterPanel>
-      <ChapterPanel item={navigation[4]}><About /></ChapterPanel>
-      <ChapterPanel item={navigation[5]}><Contact /></ChapterPanel>
+      <ChapterPanel item={navigation[4]}><Contact /></ChapterPanel>
     </div>
   </main>
   <PortfolioIndex featuredProjects={featuredProjects} />

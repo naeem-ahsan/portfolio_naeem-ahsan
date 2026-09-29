@@ -8,6 +8,7 @@ let abortController: AbortController | undefined;
 let mediaQuery: MediaQueryList | undefined;
 
 const chapterIds = new Set(props.chapters.map((chapter) => chapter.id));
+const defaultChapter = props.chapters[0]?.id ?? 'about';
 
 function chapterFromHash(): ChapterId | null {
   const value = window.location.hash.slice(1).split('/')[0];
@@ -59,7 +60,7 @@ onMounted(() => {
   const applyMode = () => {
     if (mediaQuery?.matches) {
       deck.dataset.enhanced = 'true';
-      activate(chapterFromHash() ?? (deck.dataset.activeChapter as ChapterId) ?? 'introduction');
+      activate(chapterFromHash() ?? (deck.dataset.activeChapter as ChapterId) ?? defaultChapter);
     } else {
       delete deck.dataset.enhanced;
       panels.forEach((panel) => {
@@ -70,6 +71,15 @@ onMounted(() => {
         }
       });
     }
+  };
+
+  const syncFromHistory = () => {
+    if (window.location.hash === '#index') return;
+    const id = chapterFromHash() ?? defaultChapter;
+    if (window.location.hash === '#introduction') {
+      history.replaceState({ chapter: defaultChapter }, '', `#${defaultChapter}`);
+    }
+    activate(id, { history: 'none', focus: false });
   };
 
   tabs.forEach((tab, index) => {
@@ -102,17 +112,14 @@ onMounted(() => {
     }, { signal });
   });
 
-  window.addEventListener('popstate', () => {
-    const id = chapterFromHash();
-    if (id) activate(id, { history: 'none', focus: false });
-  }, { signal });
-  window.addEventListener('hashchange', () => {
-    const id = chapterFromHash();
-    if (id) activate(id, { history: 'none', focus: false });
-  }, { signal });
+  window.addEventListener('popstate', syncFromHistory, { signal });
+  window.addEventListener('hashchange', syncFromHistory, { signal });
   mediaQuery.addEventListener('change', applyMode, { signal });
 
-  const initial = chapterFromHash() ?? 'introduction';
+  const initial = chapterFromHash() ?? defaultChapter;
+  if (window.location.hash === '#introduction') {
+    history.replaceState({ chapter: defaultChapter }, '', `#${defaultChapter}`);
+  }
   setPanelState(initial);
   applyMode();
 });

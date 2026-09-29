@@ -73,8 +73,8 @@
   }
 
   .chapter-deck[data-enhanced="true"] .chapter-content {
-    width: calc(100vw - (5 * var(--chapter-tab-width)) - var(--index-tab-width));
-    min-width: min(33rem, calc(100vw - (5 * var(--chapter-tab-width)) - var(--index-tab-width)));
+    width: calc(100vw - (var(--collapsed-chapter-count) * var(--chapter-tab-width)) - var(--index-tab-width));
+    min-width: min(33rem, calc(100vw - (var(--collapsed-chapter-count) * var(--chapter-tab-width)) - var(--index-tab-width)));
     height: 100%;
     padding: clamp(2rem, 3vw, 4rem);
     overflow-y: auto;

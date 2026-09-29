@@ -3,9 +3,10 @@ import type { NavigationItem } from '../../data/types';
 
 interface Props {
   item: NavigationItem;
+  active?: boolean;
 }
 
-const { item } = Astro.props;
+const { item, active = false } = Astro.props;
 const panelId = `chapter-panel-${item.id}`;
 const tabId = `chapter-tab-${item.id}`;
 ---
@@ -14,7 +15,7 @@ const tabId = `chapter-tab-${item.id}`;
   id={item.id}
   class="chapter-panel"
   data-chapter={item.id}
-  data-active={item.id === 'introduction' ? 'true' : 'false'}
+  data-active={active ? 'true' : 'false'}
   aria-labelledby={`heading-${item.id}`}
 >
   <button
@@ -23,7 +24,7 @@ const tabId = `chapter-tab-${item.id}`;
     type="button"
     data-chapter-tab={item.id}
     aria-controls={panelId}
-    aria-expanded={item.id === 'introduction' ? 'true' : 'false'}
+    aria-expanded={active ? 'true' : 'false'}
   >
     <span>Part {item.numeral} — {item.label}</span>
   </button>

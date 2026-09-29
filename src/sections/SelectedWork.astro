@@ -18,6 +18,10 @@ const renderedProjects = await Promise.all(
   }),
 );
 const categories = [...new Set(projects.map((project) => project.data.category))];
+const getCoverAlt = (project: CollectionEntry<'projects'>) => project.data.coverImageAlt
+  ?? (project.data.placeholder
+    ? `Placeholder visual for ${project.data.title}; approved project screenshot required`
+    : `Project cover for ${project.data.title}`);
 ---
 
 <SectionHeading
@@ -52,6 +56,7 @@ const categories = [...new Set(projects.map((project) => project.data.category))
           data-category={project.data.category}
           data-slug={slug}
           data-cover={project.data.coverImage}
+          data-cover-alt={getCoverAlt(project)}
           data-title={project.data.title}
         >
           <p class="project-number">{String(index + 1).padStart(2, '0')}</p>
@@ -73,7 +78,7 @@ const categories = [...new Set(projects.map((project) => project.data.category))
             src={project.data.coverImage}
             width="1200"
             height="760"
-            alt={`Placeholder visual for ${project.data.title}; approved project screenshot required`}
+            alt={getCoverAlt(project)}
             loading={index === 0 ? 'eager' : 'lazy'}
           />
         </article>
@@ -86,7 +91,7 @@ const categories = [...new Set(projects.map((project) => project.data.category))
         src={renderedProjects[0]?.project.data.coverImage}
         width="1200"
         height="760"
-        alt={`Preview placeholder for ${renderedProjects[0]?.project.data.title}`}
+        alt={renderedProjects[0] ? getCoverAlt(renderedProjects[0].project) : ''}
         data-project-preview-image
       />
       <figcaption data-project-preview-caption>{renderedProjects[0]?.project.data.title}</figcaption>
@@ -129,7 +134,7 @@ const categories = [...new Set(projects.map((project) => project.data.category))
             src={project.data.coverImage}
             width="1200"
             height="760"
-            alt={`Placeholder visual for ${project.data.title}; approved project screenshot required`}
+            alt={getCoverAlt(project)}
             loading="lazy"
           />
 
@@ -194,7 +199,7 @@ const categories = [...new Set(projects.map((project) => project.data.category))
   .project-summary h3,
   .case-study-header h3 {
     font-family: var(--font-display);
-    font-size: clamp(2rem, 4vw, 4.2rem);
+    font-size: clamp(2rem, 4vw, 2.5rem);
     font-weight: 400;
     line-height: 0.98;
     text-transform: uppercase;

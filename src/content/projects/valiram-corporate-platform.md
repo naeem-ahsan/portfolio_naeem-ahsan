@@ -14,7 +14,7 @@ technologies:
   - Bootstrap
   - AWS
 featured: true
-order: 1
+order: 2
 coverImage: /images/projects/project-valiram.webp
 gallery:
   - /images/projects/project-valiram.webp

@@ -1,12 +1,20 @@
 import type { SkillGroup } from './types';
 
 export const skillGroups: SkillGroup[] = [
-  { title: 'Front-End', skills: ['JavaScript', 'TypeScript', 'jQuery', 'Vue.js', 'HTML5', 'CSS / Sass', 'Bootstrap', 'Tailwind CSS', 'Liquid'] },
-  { title: 'Back-End', skills: ['PHP', 'Laravel', 'MySQL'] },
-  { title: 'CMS & Commerce', skills: ['WordPress', 'WooCommerce', 'Shopify', 'Webflow', 'Drupal', 'Sanity'] },
-  { title: 'Tools & Technology', skills: ['Git', 'Bitbucket', 'Jira', 'Confluence', 'Freshdesk', 'cPanel', 'Plesk', 'Docker', 'Postman'] },
-  { title: 'CI/CD', skills: ['Jenkins', 'GitHub Actions'] },
-  { title: 'Testing & Automation', skills: ['Playwright', 'End-to-End Testing', 'Sanity Testing', 'Checkout Flow Automation'] },
-  { title: 'AI Development', skills: ['OpenAI Codex', 'GitHub Copilot', 'Antigravity', 'Windsurf', 'Claude Code'] },
-  { title: 'Creative', skills: ['Adobe Photoshop', 'Figma', 'Adobe Lightroom', 'Adobe Premiere Pro'] },
+  {
+    title: 'Full-Stack Web Development',
+    skills: ['PHP', 'JavaScript', 'TypeScript', 'Liquid', 'HTML5', 'CSS / SCSS', 'MySQL', 'Astro.js', 'Vue.js', 'Laravel', 'Bootstrap', 'Tailwind CSS', 'jQuery']
+  },
+  {
+    title: 'CMS & Commerce Platforms',
+    skills: ['WordPress', 'Shopify', 'WooCommerce', 'Webflow', 'Drupal', 'Sanity']
+  },
+  {
+    title: 'DevOps, Servers & Automation',
+    skills: ['Docker', 'Jenkins', 'GitHub Actions', 'cPanel', 'Plesk', 'Playwright']
+  },
+  {
+    title: 'Tools, Workflows & Creative',
+    skills: ['Git', 'Bitbucket', 'Postman', 'Jira', 'Confluence', 'Freshdesk', 'Claude Code', 'GitHub Copilot', 'OpenAI Codex', 'Antigravity', 'Figma', 'Adobe Photoshop', 'Adobe Premiere Pro']
+  }
 ];

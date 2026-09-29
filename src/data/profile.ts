@@ -8,9 +8,6 @@ export const profile: Profile = {
   location: 'Kuala Lumpur, Malaysia',
   email: 'naeem30kbw@gmail.com',
   phone: '+60167030375',
-  introduction:
-    'Web Application Developer @ Valiram specialising in WordPress, Shopify, PHP, JavaScript, and modern frontend development. I build maintainable, performance-focused websites and e-commerce experiences for brands and businesses across APAC.',
-  heroStatement: 'Building digital experiences that perform.',
   availability: 'Open to freelance engagements and full-time opportunities.',
   cvUrl: '/resume/naeem-ahsan-CV.pdf',
   portrait: '/images/portrait/portrait-naeem.png',
