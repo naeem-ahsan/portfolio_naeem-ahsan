@@ -2,7 +2,7 @@
 title: Quivo WordPress Site
 slug: quivo-wordpress-site
 summary: The project aims to deliver a professional digital platform where customers can explore branch locations and menus, get directions, and make reservations.
-year: 2023
+year: 2025
 category: WordPress
 technologies:
   - WordPress

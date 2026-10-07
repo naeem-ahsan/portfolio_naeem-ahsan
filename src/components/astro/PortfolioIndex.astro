@@ -28,10 +28,10 @@ const { featuredProjects } = Astro.props;
 <aside id="portfolio-index-dialog" class="portfolio-index-panel" aria-labelledby="portfolio-index-title">
   <header>
     <div>
-      <p class="eyebrow">Directory · The Naeem Edition</p>
+      <p class="eyebrow">Directory</p>
       <h2 id="portfolio-index-title">Portfolio Index</h2>
     </div>
-    <button type="button" data-index-close hidden>Close ×</button>
+    <button type="button" data-index-close hidden>X</button>
   </header>
 
   <div class="index-grid">
@@ -96,6 +96,7 @@ const { featuredProjects } = Astro.props;
     z-index: 120;
     display: block;
     overflow-y: auto;
+    overflow-x: hidden;
     overscroll-behavior-y: contain;
     -webkit-overflow-scrolling: touch;
   }
@@ -120,9 +121,7 @@ const { featuredProjects } = Astro.props;
 
   button {
     align-self: start;
-    min-width: 6rem;
-    min-height: 2.75rem;
-    padding: 0.5rem;
+    padding: 0.3rem 0.8rem;
     border: 1px solid currentColor;
     background: transparent;
     cursor: pointer;
